@@ -1,0 +1,20 @@
+{
+  "name": "react-address-autocomplete",
+  "version": "0.0.1",
+  "description": "React Address lookup and autocomplete component",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rottitime/react-address-autocomplete.git"
+  },
+  "keywords": [],
+  "author": "rottitime",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rottitime/react-address-autocomplete/issues"
+  },
+  "homepage": "https://github.com/rottitime/react-address-autocomplete#readme"
+}
