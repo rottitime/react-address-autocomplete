@@ -1,6 +1,9 @@
 # dependencies
 node_modules
 
+#Publish
+/dist
+
 
 # misc
 lib
