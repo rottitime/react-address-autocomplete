@@ -9,43 +9,8 @@ type Props = {
 }
 
 export default function AddressAutocomplete({ countrycodes = 'gb' }: Props) {
+  const { data, setAddress } = useFetch({ countrycodes })
   const [textfield, setTextfield] = useState('')
-  // const [suggestions, setSuggestions] = useState([])
-
-  const { data: suggestions, status, setAddress } = useFetch({ countrycodes })
-
-  // useEffect(() => {
-  //   if (address.length > 2) {
-  //     const params = {
-  //       q: address,
-  //       format: 'json',
-  //       addressdetails: 1,
-  //       limit: 5,
-  //       countrycodes: 'gb'
-  //     }
-  //     axios
-  //       .get(apiUrl, { params })
-  //       .then((response) => {
-  //         setSuggestions(response.data)
-  //       })
-  //       .catch((error) => {
-  //         console.error(error)
-  //       })
-  //   } else {
-  //     setSuggestions([])
-  //   }
-  // }, [address])
-
-  function selectAddress(index: number) {
-    setAddress(suggestions[index].display_name)
-    // setSuggestions([])
-  }
-
-  // function highlightAddress(address, query) {
-  //   console.log({ address, query })
-  // const highlighted = match(address, query)
-  // return highlighted.value
-  // }
 
   return (
     <div>
@@ -54,14 +19,23 @@ export default function AddressAutocomplete({ countrycodes = 'gb' }: Props) {
         type="text"
         id="address-input"
         value={textfield}
-        onChange={(e) => setTextfield(e.target.value)}
+        onChange={(e) => {
+          const value = e.target.value
+          setTextfield(value)
+          setAddress(value)
+        }}
       />
 
-      {!!suggestions.length && (
+      {!!data.length && (
         <ul>
-          {suggestions.map((suggestion, index) => {
+          {data.map((suggestion, index) => {
             return (
-              <li key={index} onClick={() => selectAddress(index)}>
+              <li
+                key={index}
+                onClick={() => {
+                  setTextfield(data[index].display_name)
+                }}
+              >
                 {suggestion?.display_name}
                 {textfield}
               </li>
