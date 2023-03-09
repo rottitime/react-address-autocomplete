@@ -10,7 +10,9 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "rollup": "rollup -c",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "repository": {
     "type": "git",
@@ -24,17 +26,29 @@
   },
   "homepage": "https://github.com/rottitime/react-address-autocomplete#readme",
   "peerDependencies": {
-    "react": ">=18.2.1"
+    "react": ">=18.2.1",
+    "react-dom": ">=18.2.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.21.0",
     "@rollup/plugin-commonjs": "^24.0.1",
     "@rollup/plugin-node-resolve": "^15.0.1",
     "@rollup/plugin-typescript": "^11.0.0",
+    "@storybook/addon-actions": "^6.5.16",
+    "@storybook/addon-essentials": "^6.5.16",
+    "@storybook/addon-interactions": "^6.5.16",
+    "@storybook/addon-links": "^6.5.16",
+    "@storybook/builder-webpack4": "^6.5.16",
+    "@storybook/manager-webpack4": "^6.5.16",
+    "@storybook/react": "^6.5.16",
+    "@storybook/testing-library": "^0.0.13",
     "@types/jest": "^29.4.0",
     "@types/react": "^18.0.28",
+    "babel-loader": "^8.3.0",
     "jest": "^29.5.0",
     "prettier": "^2.8.4",
     "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "rollup": "^3.18.0",
     "rollup-plugin-dts": "^5.2.0",
     "ts-jest": "^29.0.5",

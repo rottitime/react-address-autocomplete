@@ -6,7 +6,11 @@ type Data = {
   display_name: string
 }
 
-const useFetch = () => {
+type Props = {
+  countrycodes: string
+}
+
+const useFetch = ({ countrycodes }: Props) => {
   const [status, setStatus] = useState('idle')
   const [data, setData] = useState<Data[]>([])
 
@@ -17,7 +21,7 @@ const useFetch = () => {
         format: 'json',
         addressdetails: '1',
         limit: '5',
-        countrycodes: 'gb'
+        countrycodes
       }
 
       setStatus('fetching')

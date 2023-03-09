@@ -4,11 +4,15 @@ import useFetch from '../hooks/useFetch'
 
 // const apiUrl = 'https://nominatim.openstreetmap.org/search'
 
-export default function AddressAutocomplete() {
+type Props = {
+  countrycodes?: string
+}
+
+export default function AddressAutocomplete({ countrycodes = 'gb' }: Props) {
   const [textfield, setTextfield] = useState('')
   // const [suggestions, setSuggestions] = useState([])
 
-  const { data: suggestions, status, setAddress } = useFetch()
+  const { data: suggestions, status, setAddress } = useFetch({ countrycodes })
 
   // useEffect(() => {
   //   if (address.length > 2) {
