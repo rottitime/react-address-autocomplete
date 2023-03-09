@@ -5,7 +5,11 @@ import AddressAutocomplete from '../components/AddressAutocomplete'
 export default {
   title: 'AddressAutocomplete',
   component: AddressAutocomplete,
-  argTypes: {}
+  argTypes: {
+    variant: {
+      hideLabel: { control: 'boolean' }
+    }
+  }
 } as ComponentMeta<typeof AddressAutocomplete>
 
 const Template: ComponentStory<typeof AddressAutocomplete> = (args) => (
@@ -14,5 +18,6 @@ const Template: ComponentStory<typeof AddressAutocomplete> = (args) => (
 
 export const Default = Template.bind({})
 Default.args = {
-  countrycodes: 'gb'
+  countrycodes: 'gb',
+  label: 'Enter your address'
 } as ComponentProps<typeof AddressAutocomplete>

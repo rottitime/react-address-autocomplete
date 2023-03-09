@@ -1,23 +1,30 @@
-import React from 'react'
+import React, { useId } from 'react'
 import { useState } from 'react'
 import useFetch from '../hooks/useFetch'
 
-// const apiUrl = 'https://nominatim.openstreetmap.org/search'
-
 type Props = {
   countrycodes?: string
+  label: string
+  hideLabel?: boolean
 }
 
-export default function AddressAutocomplete({ countrycodes = 'gb' }: Props) {
-  const { data, setAddress } = useFetch({ countrycodes })
+export default function AddressAutocomplete({
+  countrycodes = 'gb',
+  label,
+  hideLabel
+}: Props) {
+  const { data, setAddress, clear } = useFetch({ countrycodes })
+  const id = useId()
+  const inuputId = `input_${id}`
   const [textfield, setTextfield] = useState('')
 
   return (
     <div>
-      <label htmlFor="address-input">Enter your address:</label>
+      {!hideLabel && <label htmlFor={inuputId}>{label}</label>}
       <input
+        aria-label={label}
         type="text"
-        id="address-input"
+        id={inuputId}
         value={textfield}
         onChange={(e) => {
           const value = e.target.value
@@ -34,6 +41,7 @@ export default function AddressAutocomplete({ countrycodes = 'gb' }: Props) {
                 key={index}
                 onClick={() => {
                   setTextfield(data[index].display_name)
+                  clear()
                 }}
               >
                 {suggestion?.display_name}

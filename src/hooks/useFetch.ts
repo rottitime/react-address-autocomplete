@@ -2,6 +2,14 @@ import { useState } from 'react'
 
 const apiUrl = 'https://nominatim.openstreetmap.org/search'
 
+type Params = {
+  q: string
+  format: 'xml' | 'json' | 'jsonv2' | 'geojson' | 'geocodejson'
+  addressdetails: string
+  limit: string
+  countrycodes: string
+}
+
 type Data = {
   place_id: number
   licence: string
@@ -37,9 +45,11 @@ const useFetch = ({ countrycodes }: Props) => {
   const [status, setStatus] = useState<'idle' | 'fetching' | 'fetched'>('idle')
   const [data, setData] = useState<Data[]>([])
 
+  const clear = () => setData([])
+
   const setAddress = async (address: string) => {
     if (address.length > 2) {
-      const params = {
+      const params: Params = {
         q: address,
         format: 'json',
         addressdetails: '1',
@@ -62,7 +72,7 @@ const useFetch = ({ countrycodes }: Props) => {
     }
   }
 
-  return { status, data, setAddress } as const
+  return { status, data, setAddress, clear } as const
 }
 
 export default useFetch
