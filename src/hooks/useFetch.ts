@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { MapData } from '../types'
+import { CountryCodes, MapData } from '../types'
 
 const apiUrl = 'https://nominatim.openstreetmap.org/search'
 
@@ -11,8 +11,8 @@ type Params = {
   countrycodes: string
 }
 
-type Props = {
-  countrycodes: string
+export type Props = {
+  countrycodes: string | (keyof typeof CountryCodes)[]
 }
 
 const useFetch = ({ countrycodes }: Props) => {
@@ -28,7 +28,7 @@ const useFetch = ({ countrycodes }: Props) => {
         format: 'json',
         addressdetails: '1',
         limit: '5',
-        countrycodes
+        countrycodes: Array.isArray(countrycodes) ? countrycodes.join(',') : countrycodes
       }
 
       setStatus('fetching')

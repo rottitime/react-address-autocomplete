@@ -6,8 +6,9 @@ export default {
   title: 'AddressAutocomplete',
   component: AddressAutocomplete,
   argTypes: {
-    variant: {
-      hideLabel: { control: 'boolean' }
+    countrycodes: {
+      description:
+        'Limit search results to one or more countries. <countrycode> must be the ISO 3166-1alpha2 code, e.g. gb for the United Kingdom, de for Germany.'
     }
   }
 } as ComponentMeta<typeof AddressAutocomplete>
@@ -18,6 +19,11 @@ const Template: ComponentStory<typeof AddressAutocomplete> = (args) => (
 
 export const Default = Template.bind({})
 Default.args = {
-  countrycodes: 'gb',
   label: 'Enter your address'
 } as ComponentProps<typeof AddressAutocomplete>
+
+export const WithCountryCode = Template.bind({})
+WithCountryCode.args = {
+  ...Default.args,
+  countrycodes: ['GB']
+}

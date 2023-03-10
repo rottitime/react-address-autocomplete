@@ -1,18 +1,17 @@
 import React, { ChangeEvent, useId } from 'react'
 import { useState } from 'react'
-import useFetch from '../hooks/useFetch'
+import useFetch, { Props as useFetchProps } from '../hooks/useFetch'
 import { MapData } from '../types'
 
 type Props = {
-  countrycodes?: string
   label: string
   hideLabel?: boolean
   onSelected?: (data: MapData) => void
   onChange?: (event: ChangeEvent<HTMLInputElement>) => void
-}
+} & Pick<useFetchProps, 'countrycodes'>
 
 export default function AddressAutocomplete({
-  countrycodes = 'gb',
+  countrycodes,
   label,
   hideLabel,
   onSelected,
