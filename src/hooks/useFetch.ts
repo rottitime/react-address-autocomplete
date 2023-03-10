@@ -12,10 +12,10 @@ type Params = {
 }
 
 export type Props = {
-  countrycodes: string | (keyof typeof CountryCodes)[]
+  countrycodes?: string | (keyof typeof CountryCodes)[]
 }
 
-const useFetch = ({ countrycodes }: Props) => {
+const useFetch = ({ countrycodes = '' }: Props) => {
   const [status, setStatus] = useState<'idle' | 'fetching' | 'fetched'>('idle')
   const [data, setData] = useState<MapData[]>([])
 
