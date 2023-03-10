@@ -6,6 +6,7 @@
     "module": "ESNext",
     "declaration": true,
     "declarationDir": "types",
+    "downlevelIteration": true,
     "sourceMap": true,
     "outDir": "dist",
     "strict": true,
