@@ -1,17 +1,22 @@
-import React, { useId } from 'react'
+import React, { ChangeEvent, useId } from 'react'
 import { useState } from 'react'
 import useFetch from '../hooks/useFetch'
+import { MapData } from '../types'
 
 type Props = {
   countrycodes?: string
   label: string
   hideLabel?: boolean
+  onSelected?: (data: MapData) => void
+  onChange?: (event: ChangeEvent<HTMLInputElement>) => void
 }
 
 export default function AddressAutocomplete({
   countrycodes = 'gb',
   label,
-  hideLabel
+  hideLabel,
+  onSelected,
+  onChange
 }: Props) {
   const { data, setAddress, clear } = useFetch({ countrycodes })
   const id = useId()
@@ -30,6 +35,7 @@ export default function AddressAutocomplete({
           const value = e.target.value
           setTextfield(value)
           setAddress(value)
+          if (typeof onChange === 'function') onChange(e)
         }}
       />
 
@@ -40,8 +46,10 @@ export default function AddressAutocomplete({
               <li
                 key={index}
                 onClick={() => {
-                  setTextfield(data[index].display_name)
+                  const mapData = data[index]
+                  setTextfield(mapData.display_name)
                   clear()
+                  if (typeof onSelected === 'function') onSelected(mapData)
                 }}
               >
                 {suggestion?.display_name}
