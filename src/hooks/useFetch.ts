@@ -1,9 +1,7 @@
 import { useState } from 'react'
 import { CountryCodes, MapData } from '../types'
 
-const apiUrl = 'https://nominatim.openstreetmap.org/search'
-
-type Params = {
+type ApiParams = {
   q: string
   format: 'xml' | 'json' | 'jsonv2' | 'geojson' | 'geocodejson'
   addressdetails: string
@@ -15,6 +13,8 @@ export type Props = {
   countrycodes?: string | (keyof typeof CountryCodes)[]
 }
 
+const apiUrl = 'https://nominatim.openstreetmap.org/search'
+
 const useFetch = ({ countrycodes = '' }: Props) => {
   const [status, setStatus] = useState<'idle' | 'fetching' | 'fetched'>('idle')
   const [data, setData] = useState<MapData[]>([])
@@ -23,7 +23,7 @@ const useFetch = ({ countrycodes = '' }: Props) => {
 
   const setAddress = async (address: string) => {
     if (address.length > 2) {
-      const params: Params = {
+      const params: ApiParams = {
         q: address,
         format: 'json',
         addressdetails: '1',
