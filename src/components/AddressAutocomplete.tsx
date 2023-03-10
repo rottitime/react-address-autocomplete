@@ -45,7 +45,7 @@ export default function AddressAutocomplete({
         }}
       />
 
-      {!!results.length && (
+      {!!textfield && !!results.length && (
         <ul>
           {results.map((suggestion, index) => {
             return (
