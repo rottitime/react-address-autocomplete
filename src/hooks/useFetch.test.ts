@@ -1,10 +1,9 @@
-// import { mockMe, renderHookWithProviders } from '@/lib/test-utils'
-// import { AuthUser } from '@/service/types'
 import { act, renderHook, waitFor } from '@testing-library/react'
 import useFetch from './useFetch'
 import fetchMock from 'jest-fetch-mock'
 import { MapData } from '../types'
 
+const apiPrefix = 'https://nominatim.openstreetmap.org/search?'
 const mockData: Partial<MapData>[] = [...Array(3).keys()].map((i) => ({
   display_name: `Random title ${i}`
 }))
@@ -33,7 +32,7 @@ describe('Hook: useFetch', () => {
       await waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(1))
 
       expect(fetchMock).toHaveBeenCalledWith(
-        'https://nominatim.openstreetmap.org/search?q=Hyrule+castle&format=json&addressdetails=1&limit=10&countrycodes='
+        `${apiPrefix}q=Hyrule+castle&format=json&addressdetails=1&limit=10&countrycodes=`
       )
     })
   })
@@ -71,7 +70,7 @@ describe('Hook: useFetch', () => {
     await waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(1))
 
     expect(fetchMock).toHaveBeenCalledWith(
-      'https://nominatim.openstreetmap.org/search?q=Hyrule+castle&format=json&addressdetails=1&limit=10&countrycodes=AD%2CAF'
+      `${apiPrefix}q=Hyrule+castle&format=json&addressdetails=1&limit=10&countrycodes=AD%2CAF`
     )
   })
 })
