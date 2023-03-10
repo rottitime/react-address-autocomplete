@@ -1,4 +1,4 @@
-export type MapData,
+export type MapData = {
   place_id: number
   licence: string
   osm_type: string
@@ -276,5 +276,5 @@ export enum CountryCodes {
   EH,
   YE,
   ZM,
-  ZW,
+  ZW
 }
