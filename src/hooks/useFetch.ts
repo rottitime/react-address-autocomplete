@@ -6,16 +6,16 @@ type ApiParams = {
   format: 'xml' | 'json' | 'jsonv2' | 'geojson' | 'geocodejson'
   addressdetails: string
   limit: string
-  countrycodes: string
+  countrycodes?: string
 }
 
 export type Props = {
-  countrycodes?: string | (keyof typeof CountryCodes)[]
+  countrycodes?: (keyof typeof CountryCodes)[]
 }
 
 const apiUrl = 'https://nominatim.openstreetmap.org/search'
 
-const useFetch = ({ countrycodes = '' }: Props) => {
+const useFetch = ({ countrycodes = [] }: Props) => {
   const [status, setStatus] = useState<'idle' | 'fetching' | 'fetched'>('idle')
   const [data, setData] = useState<MapData[]>([])
 
@@ -28,7 +28,7 @@ const useFetch = ({ countrycodes = '' }: Props) => {
         format: 'json',
         addressdetails: '1',
         limit: '10',
-        countrycodes: Array.isArray(countrycodes) ? countrycodes.join(',') : countrycodes
+        countrycodes: countrycodes.join(',')
       }
 
       setStatus('fetching')
