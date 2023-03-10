@@ -1,5 +1,6 @@
-import React, { ChangeEvent, useId } from 'react'
+import React, { ChangeEvent, useEffect, useId } from 'react'
 import { useState } from 'react'
+import useDebounce from '../hooks/useDebounce'
 import useFetch, { Props as useFetchProps } from '../hooks/useFetch'
 import { MapData } from '../types'
 
@@ -22,6 +23,14 @@ export default function AddressAutocomplete({
   const inuputId = `input_${id}`
   const [textfield, setTextfield] = useState('')
 
+  const debouncedSearchQuery = useDebounce(textfield, 600)
+
+  useEffect(() => {
+    setAddress(textfield)
+  }, [debouncedSearchQuery])
+
+  const results = data.filter((mapData) => mapData.display_name !== textfield)
+
   return (
     <div>
       {!hideLabel && <label htmlFor={inuputId}>{label}</label>}
@@ -31,16 +40,14 @@ export default function AddressAutocomplete({
         id={inuputId}
         value={textfield}
         onChange={(e) => {
-          const value = e.target.value
-          setTextfield(value)
-          setAddress(value)
+          setTextfield(e.target.value)
           if (typeof onChange === 'function') onChange(e)
         }}
       />
 
-      {!!data.length && (
+      {!!results.length && (
         <ul>
-          {data.map((suggestion, index) => {
+          {results.map((suggestion, index) => {
             return (
               <li
                 key={index}
@@ -52,7 +59,6 @@ export default function AddressAutocomplete({
                 }}
               >
                 {suggestion?.display_name}
-                {textfield}
               </li>
             )
           })}

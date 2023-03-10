@@ -27,7 +27,7 @@ const useFetch = ({ countrycodes = '' }: Props) => {
         q: address,
         format: 'json',
         addressdetails: '1',
-        limit: '5',
+        limit: '10',
         countrycodes: Array.isArray(countrycodes) ? countrycodes.join(',') : countrycodes
       }
 
