@@ -38,6 +38,28 @@ describe('Hook: useFetch', () => {
     })
   })
 
+  it('after two characters', async () => {
+    fetchMock.mockResponse(JSON.stringify(mockData))
+    const { result } = renderHook(() => useFetch({}))
+    act(() => {
+      result.current.setAddress('H')
+    })
+
+    await waitFor(() => expect(fetchMock).not.toHaveBeenCalled())
+
+    act(() => {
+      result.current.setAddress('Hy')
+    })
+
+    await waitFor(() => expect(fetchMock).not.toHaveBeenCalled())
+
+    act(() => {
+      result.current.setAddress('Hyr')
+    })
+
+    await waitFor(() => expect(fetchMock).toHaveBeenCalled())
+  })
+
   it('with countrycode', async () => {
     fetchMock.mockResponse(JSON.stringify(mockData))
     const { result } = renderHook(() => useFetch({ countrycodes: ['AD', 'AF'] }))
