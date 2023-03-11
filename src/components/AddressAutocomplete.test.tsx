@@ -1,7 +1,11 @@
-import { screen, waitFor, render } from '@testing-library/react'
-import AddressAutocomplete from './AddressAutocomplete'
-import userEvent from '@testing-library/user-event'
 import React, { ComponentProps } from 'react'
+import {
+  screen,
+  render
+  // waitFor,
+} from '@testing-library/react'
+import AddressAutocomplete from './AddressAutocomplete'
+// import userEvent from '@testing-library/user-event'
 
 const props: ComponentProps<typeof AddressAutocomplete> = {
   label: 'address label'
@@ -28,7 +32,7 @@ describe('AddressAutocomplete', () => {
     const { label } = props
     render(<AddressAutocomplete {...props} hideLabel />)
     expect(screen.queryByText(label)).not.toBeInTheDocument()
-    expect(textfield).toHaveAttribute('aria-label', label)
+    expect(screen.getByLabelText(label)).toHaveAttribute('aria-label', label)
   })
 
   // it('renders with value', async () => {

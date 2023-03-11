@@ -33,7 +33,7 @@ const useFetch = ({ countrycodes = [] }: Props) => {
 
       setStatus('fetching')
       try {
-        const res = await fetch(`${apiUrl}?` + new URLSearchParams(params))
+        const res = await fetch(`${apiUrl}?${new URLSearchParams(params).toString()}`)
         const data = await res.json()
         setData(data)
         setStatus('fetched')

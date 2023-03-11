@@ -1,5 +1,4 @@
-import React, { ChangeEvent, useEffect, useId } from 'react'
-import { useState } from 'react'
+import React, { ChangeEvent, useEffect, useId, useState } from 'react'
 import useDebounce from '../hooks/useDebounce'
 import useFetch, { Props as useFetchProps } from '../hooks/useFetch'
 import { MapData } from '../types'
@@ -27,7 +26,7 @@ export default function AddressAutocomplete({
 
   useEffect(() => {
     setAddress(textfield)
-  }, [debouncedSearchQuery])
+  }, [debouncedSearchQuery, setAddress, textfield])
 
   const results = data.filter((mapData) => mapData.display_name !== textfield)
 
