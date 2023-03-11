@@ -24,6 +24,13 @@ describe('AddressAutocomplete', () => {
     expect(textfield).toHaveAttribute('aria-label', label)
   })
 
+  it('label hidden', async () => {
+    const { label } = props
+    render(<AddressAutocomplete {...props} hideLabel />)
+    expect(screen.queryByText(label)).not.toBeInTheDocument()
+    expect(textfield).toHaveAttribute('aria-label', label)
+  })
+
   // it('renders with value', async () => {
   //   render(
   //     <AddressAutocomplete
