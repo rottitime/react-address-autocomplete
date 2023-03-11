@@ -26,6 +26,8 @@ describe('AddressAutocomplete', () => {
     expect(textfield).toBeVisible()
     expect(textfield).toHaveValue('')
     expect(textfield).toHaveAttribute('aria-label', label)
+    expect(screen.getByRole('region')).toBeInTheDocument()
+    expect(screen.getByRole('region')).toBeEmptyDOMElement()
   })
 
   it('label hidden', async () => {

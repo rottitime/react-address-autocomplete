@@ -26,7 +26,8 @@ export default function AddressAutocomplete({
 
   useEffect(() => {
     setAddress(textfield)
-  }, [debouncedSearchQuery, setAddress, textfield])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [debouncedSearchQuery])
 
   const results = data.filter((mapData) => mapData.display_name !== textfield)
 
@@ -44,25 +45,27 @@ export default function AddressAutocomplete({
         }}
       />
 
-      {!!textfield && !!results.length && (
-        <ul>
-          {results.map((suggestion, index) => {
-            return (
-              <li
-                key={index}
-                onClick={() => {
-                  const mapData = data[index]
-                  setTextfield(mapData.display_name)
-                  clear()
-                  if (typeof onSelected === 'function') onSelected(mapData)
-                }}
-              >
-                {suggestion?.display_name}
-              </li>
-            )
-          })}
-        </ul>
-      )}
+      <div role="region" aria-live="polite">
+        {!!textfield && !!results.length && (
+          <ul>
+            {results.map((suggestion, index) => {
+              return (
+                <li
+                  key={index}
+                  onClick={() => {
+                    const mapData = data[index]
+                    setTextfield(mapData.display_name)
+                    clear()
+                    if (typeof onSelected === 'function') onSelected(mapData)
+                  }}
+                >
+                  {suggestion?.display_name}
+                </li>
+              )
+            })}
+          </ul>
+        )}
+      </div>
     </div>
   )
 }
