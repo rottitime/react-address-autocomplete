@@ -1,15 +1,16 @@
 import React, { ComponentProps } from 'react'
-import {
-  screen,
-  render
-  // waitFor,
-} from '@testing-library/react'
+import { screen, render, waitFor } from '@testing-library/react'
 import AddressAutocomplete from './AddressAutocomplete'
-// import userEvent from '@testing-library/user-event'
+import userEvent from '@testing-library/user-event'
+import { MapData } from '../types'
 
 const props: ComponentProps<typeof AddressAutocomplete> = {
   label: 'address label'
 }
+
+const mockData: Partial<MapData>[] = [...Array(3).keys()].map((i) => ({
+  display_name: `Random title ${i}`
+}))
 
 describe('AddressAutocomplete', () => {
   afterEach(() => {
@@ -35,6 +36,19 @@ describe('AddressAutocomplete', () => {
     render(<AddressAutocomplete {...props} hideLabel />)
     expect(screen.queryByText(label)).not.toBeInTheDocument()
     expect(screen.getByLabelText(label)).toHaveAttribute('aria-label', label)
+  })
+
+  it('fetch success', async () => {
+    fetchMock.mockResponse(JSON.stringify(mockData))
+    render(<AddressAutocomplete {...props} hideLabel />)
+
+    const textfield = screen.getByLabelText(props.label)
+
+    await userEvent.type(textfield, 'Hyrule castle')
+
+    await waitFor(() => {
+      expect(fetchMock).toHaveBeenCalledTimes(1)
+    })
   })
 
   // it('renders with value', async () => {

@@ -13,7 +13,8 @@ export type Props = {
   countrycodes?: (keyof typeof CountryCodes)[]
 }
 
-const apiUrl = 'https://nominatim.openstreetmap.org/search'
+// const apiUrl = 'https://nominatim.openstreetmap.org/search'
+const apiUrl = 'https://127.0.0.1/search'
 
 const useFetch = ({ countrycodes = [] }: Props) => {
   const [status, setStatus] = useState<'idle' | 'fetching' | 'fetched'>('idle')

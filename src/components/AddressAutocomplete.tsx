@@ -31,6 +31,7 @@ export default function AddressAutocomplete({
 
   const results = data.filter((mapData) => mapData.display_name !== textfield)
 
+  //TODO: Add aria-autocomplete="list"
   return (
     <div>
       {!hideLabel && <label htmlFor={inuputId}>{label}</label>}
