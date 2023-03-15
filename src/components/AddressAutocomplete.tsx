@@ -19,10 +19,11 @@ export default function AddressAutocomplete({
 }: Props) {
   const { data, setAddress, clear } = useFetch({ countrycodes })
   const id = useId()
-  const inuputId = `input_${id}`
+  const inputId = `input_${id}`
+  const listId = `list_${id}`
   const [textfield, setTextfield] = useState('')
 
-  const debouncedSearchQuery = useDebounce(textfield, 600)
+  const debouncedSearchQuery = useDebounce(textfield, 2000)
 
   useEffect(() => {
     setAddress(textfield)
@@ -30,15 +31,18 @@ export default function AddressAutocomplete({
   }, [debouncedSearchQuery])
 
   const results = data.filter((mapData) => mapData.display_name !== textfield)
+  const hasResults = !!textfield && !!results.length
 
   //TODO: Add aria-autocomplete="list"
   return (
     <div>
-      {!hideLabel && <label htmlFor={inuputId}>{label}</label>}
+      {!hideLabel && <label htmlFor={inputId}>{label}</label>}
       <input
         aria-label={label}
+        aria-owns={listId}
+        aria-autocomplete="list"
         type="text"
-        id={inuputId}
+        id={inputId}
         value={textfield}
         onChange={(e) => {
           setTextfield(e.target.value)
@@ -46,8 +50,8 @@ export default function AddressAutocomplete({
         }}
       />
 
-      <div role="region" aria-live="polite">
-        {!!textfield && !!results.length && (
+      <div role="listbox" aria-live="polite" id={listId} aria-expanded={hasResults}>
+        {hasResults && (
           <ul>
             {results.map((suggestion, index) => {
               return (
