@@ -14,6 +14,7 @@
     "test:watch": "DEBUG_PRINT_LIMIT=1000000 jest --watch",
     "test:coverage": "jest --coverage",
     "test": "jest",
+    "test:all": "npm run lint && npm run test",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
