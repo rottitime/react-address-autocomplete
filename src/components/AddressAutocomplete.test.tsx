@@ -61,5 +61,21 @@ describe('AddressAutocomplete', () => {
         expect(within(list).getByText(display_name)).toBeInTheDocument()
       })
     })
+
+    it('clicking list populates input', async () => {
+      fetchMock.mockResponse(JSON.stringify(mockData))
+      render(<AddressAutocomplete {...props} hideLabel />)
+      const textfield = screen.getByLabelText(props.label)
+      const list = screen.getByRole('listbox')
+      const selected = mockData[0].display_name
+
+      fireEvent.change(textfield, { target: { value: 'Hyrule castle' } })
+      await waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(1))
+
+      fireEvent.click(within(list).getByText(selected))
+      expect(textfield).toHaveValue(selected)
+      expect(list).toHaveAttribute('aria-expanded', 'false')
+      expect(list).toBeEmptyDOMElement()
+    })
   })
 })
