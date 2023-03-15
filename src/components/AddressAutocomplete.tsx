@@ -23,7 +23,7 @@ export default function AddressAutocomplete({
   const listId = `list_${id}`
   const [textfield, setTextfield] = useState('')
 
-  const debouncedSearchQuery = useDebounce(textfield, 2000)
+  const debouncedSearchQuery = useDebounce(textfield, 600)
 
   useEffect(() => {
     setAddress(textfield)
