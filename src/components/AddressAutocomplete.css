@@ -1,7 +1,3 @@
 .rottitime-address {
-  color: DodgerBlue;
-  padding: 40px;
-  font-family: Arial;
-  text-align: center;
-  border: 10px solid red;
+  position: relative;
 }
