@@ -13,11 +13,17 @@ Also provides events like `onSelected` to useful information such as:
 
 The field has been minimum styling applied so you can utilise your own colors, fonts and ui.
 
+---
+
+## Demo
+
 Full working example: https://rottitime.github.io/react-address-autocomplete/?path=/story/addressautocomplete--default
 
 [![Edit Button](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/trusting-blackburn-riq4i1?file=/src/App.js)
 
 <img src="https://rottitime.github.io/react-address-autocomplete/img/screenshot.png" alt="screenhshot" />
+
+---
 
 ## Installation
 
@@ -31,6 +37,8 @@ React Address Autocomplete is available as an [npm package](https://www.npmjs.co
 npm install @rottitime/react-address-autocomplete
 ```
 
+---
+
 ## Getting started with React Address Autocomplete
 
 Here is an example of a basic app using Material UI's `AddressAutocomplete` component:
@@ -43,12 +51,15 @@ function App() {
 }
 ```
 
+---
+
 ## Props
 
-- onSelected: Triggers once an address has been selected from the list
-- onChange: as input field changes
-- countrycodes: Limit search results to one or more countries. must be the ISO 3166-1alpha2 e.g. gb for the United Kingdom, de for Germany.
-- label: input field label
+- `onSelected`: Triggers once an address has been selected from the list
+- `onChange`: as input field changes
+- `countrycodes`: Limit search results to one or more countries. must be the ISO 3166-1alpha2 e.g. gb for the United Kingdom, de for Germany.
+- `label`: input field label
+- `disableStyles`: Remove all styles, Useful if you want to apply your own designs
 - all other props for `input` can also be passed
 
 ---
