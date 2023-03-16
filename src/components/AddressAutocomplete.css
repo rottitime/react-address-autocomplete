@@ -41,6 +41,7 @@
   cursor: pointer;
   transition: all 0.5s;
   font-size: 0.9em;
+  text-align: left;
 }
 
 .rottitime-address.enable-styles li:hover {
