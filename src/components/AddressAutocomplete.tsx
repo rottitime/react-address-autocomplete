@@ -1,22 +1,28 @@
-import React, { ChangeEvent, useEffect, useId, useState } from 'react'
+import React, {
+  ChangeEvent,
+  InputHTMLAttributes,
+  useEffect,
+  useId,
+  useState
+} from 'react'
 import useDebounce from '../hooks/useDebounce'
 import useFetch, { Props as useFetchProps } from '../hooks/useFetch'
 import { MapData } from '../types'
 import './AddressAutocomplete.css'
 
 type Props = {
-  label: string
-  hideLabel?: boolean
+  label?: string
   onSelected?: (data: MapData) => void
   onChange?: (event: ChangeEvent<HTMLInputElement>) => void
-} & Pick<useFetchProps, 'countrycodes'>
+} & Pick<useFetchProps, 'countrycodes'> &
+  InputHTMLAttributes<HTMLInputElement>
 
 export default function AddressAutocomplete({
   countrycodes,
   label,
-  hideLabel,
   onSelected,
-  onChange
+  onChange,
+  ...props
 }: Props) {
   const { data, setAddress, clear } = useFetch({ countrycodes })
   const id = useId()
@@ -37,7 +43,7 @@ export default function AddressAutocomplete({
   //TODO: Add aria-autocomplete="list"
   return (
     <div className="rottitime-address">
-      {!hideLabel && <label htmlFor={inputId}>{label}</label>}
+      {!!label && <label htmlFor={inputId}>{label}</label>}
       <input
         aria-label={label}
         aria-owns={listId}
@@ -50,6 +56,7 @@ export default function AddressAutocomplete({
           setTextfield(e.target.value)
           if (typeof onChange === 'function') onChange(e)
         }}
+        {...props}
       />
 
       <div role="listbox" aria-live="polite" id={listId} aria-expanded={hasResults}>

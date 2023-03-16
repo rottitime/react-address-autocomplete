@@ -19,11 +19,14 @@ const Template: ComponentStory<typeof AddressAutocomplete> = (args) => (
 
 export const Default = Template.bind({})
 Default.args = {
-  label: 'Enter your address'
+  label: 'Enter your address',
+  placeholder: 'e.g. 10 downing street',
+  style: { width: 500 }
 } as ComponentProps<typeof AddressAutocomplete>
 
 export const WithCountryCode = Template.bind({})
 WithCountryCode.args = {
   ...Default.args,
+
   countrycodes: ['GB']
 }

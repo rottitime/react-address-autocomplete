@@ -1,10 +1,10 @@
-import React, { ComponentProps } from 'react'
+import React from 'react'
 import { screen, render, waitFor, fireEvent, within } from '@testing-library/react'
 import AddressAutocomplete from './AddressAutocomplete'
 import fetchMock from 'jest-fetch-mock'
 import { MapData } from '../types'
 
-const props: ComponentProps<typeof AddressAutocomplete> = {
+const props = {
   label: 'address label'
 }
 
@@ -37,7 +37,7 @@ describe('AddressAutocomplete', () => {
 
   it('label hidden', async () => {
     const { label } = props
-    render(<AddressAutocomplete {...props} hideLabel />)
+    render(<AddressAutocomplete {...props} label={undefined} />)
     expect(screen.queryByText(label)).not.toBeInTheDocument()
     expect(screen.getByLabelText(label)).toHaveAttribute('aria-label', label)
   })
@@ -45,7 +45,7 @@ describe('AddressAutocomplete', () => {
   describe('fetch', () => {
     it('creates list', async () => {
       fetchMock.mockResponse(JSON.stringify(mockData))
-      render(<AddressAutocomplete {...props} hideLabel />)
+      render(<AddressAutocomplete {...props} />)
 
       const textfield = screen.getByLabelText(props.label)
       const list = screen.getByRole('listbox')
@@ -65,7 +65,7 @@ describe('AddressAutocomplete', () => {
 
     it('clicking list populates input', async () => {
       fetchMock.mockResponse(JSON.stringify(mockData))
-      render(<AddressAutocomplete {...props} hideLabel />)
+      render(<AddressAutocomplete {...props} />)
       const textfield = screen.getByLabelText(props.label)
       const list = screen.getByRole('listbox')
       const selected = mockData[0].display_name
