@@ -2,6 +2,7 @@ import React, { ChangeEvent, useEffect, useId, useState } from 'react'
 import useDebounce from '../hooks/useDebounce'
 import useFetch, { Props as useFetchProps } from '../hooks/useFetch'
 import { MapData } from '../types'
+import './AddressAutocomplete.module.css'
 
 type Props = {
   label: string
@@ -35,7 +36,7 @@ export default function AddressAutocomplete({
 
   //TODO: Add aria-autocomplete="list"
   return (
-    <div>
+    <div className="rottitime-address">
       {!hideLabel && <label htmlFor={inputId}>{label}</label>}
       <input
         aria-label={label}
