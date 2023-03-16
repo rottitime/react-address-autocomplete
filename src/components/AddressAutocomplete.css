@@ -25,6 +25,7 @@
   overflow-x: overlay;
   max-height: 230px;
   width: 100%;
+  background-color: #fff;
 }
 
 .rottitime-address li {
