@@ -1,5 +1,9 @@
+#App
+/storybook-static
+
 # dependencies
 node_modules
+
 
 #Publish
 /dist
