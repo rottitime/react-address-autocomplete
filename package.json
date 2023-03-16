@@ -16,7 +16,8 @@
     "test": "jest",
     "test:all": "npm run lint && npm run test",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "export SET NODE_OPTIONS=--openssl-legacy-provider && build-storybook"
+    "storybook:build": "build-storybook",
+    "storybook:build:github": "export SET NODE_OPTIONS=--openssl-legacy-provider && build-storybook"
   },
   "repository": {
     "type": "git",
