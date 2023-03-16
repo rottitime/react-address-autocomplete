@@ -1,19 +1,27 @@
-.rottitime-address {
+.rottitime-address.enable-styles {
   --color1: #000;
   --color2: #888;
   position: relative;
   display: inline-block;
 }
 
-.rottitime-address .input-wrapper {
+/**  design **/
+
+.rottitime-address.enable-styles .input-wrapper {
   position: relative;
 }
 
-.rottitime-address label {
-  display: block;
+.rottitime-address.enable-styles .input-wrapper input {
+  padding: 10px 14px;
+  font-size: 1.1em;
 }
 
-.rottitime-address ul {
+.rottitime-address.enable-styles label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.rottitime-address.enable-styles ul {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -27,14 +35,15 @@
   background-color: #fff;
 }
 
-.rottitime-address li {
+.rottitime-address.enable-styles li {
   padding: 10px 0;
   color: var(--color2);
   cursor: pointer;
   transition: all 0.5s;
+  font-size: 0.9em;
 }
 
-.rottitime-address li:hover {
+.rottitime-address.enable-styles li:hover {
   color: var(--color1);
 }
 
