@@ -1,3 +1,7 @@
 .rottitime-address {
   position: relative;
 }
+
+.rottitime-address label {
+  display: block;
+}

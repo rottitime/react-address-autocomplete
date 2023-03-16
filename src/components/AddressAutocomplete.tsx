@@ -42,6 +42,7 @@ export default function AddressAutocomplete({
         aria-label={label}
         aria-owns={listId}
         aria-autocomplete="list"
+        autoComplete="off"
         type="text"
         id={inputId}
         value={textfield}
