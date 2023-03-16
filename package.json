@@ -1,5 +1,5 @@
 {
-  "name": "react-address-autocomplete",
+  "name": "@rottitime/react-address-autocomplete",
   "version": "0.0.1",
   "description": "React Address lookup and autocomplete component",
   "main": "dist/cjs/index.js",
