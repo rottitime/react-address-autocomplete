@@ -1,5 +1,10 @@
-src
 tsconfig.json
 tslint.json
 .prettierrc.json
-lib/**/*.test.js
+**/*.test.js
+**/*.test.ts
+**/*.test.tsx
+.vscode
+rollup.config.mjs
+jest.config.ts
+jest.setup.ts

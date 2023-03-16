@@ -1,0 +1,58 @@
+.rottitime-address {
+  --color1: #000;
+  --color2: #888;
+
+  position: relative;
+  display: inline-block;
+}
+
+.rottitime-address .input-wrapper {
+  position: relative;
+}
+
+.rottitime-address label {
+  display: block;
+}
+
+.rottitime-address ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border: 1px solid var(--color1);
+  padding: 5px;
+  position: absolute;
+  overflow-y: scroll;
+  overflow-x: overlay;
+  max-height: 230px;
+  width: 100%;
+}
+
+.rottitime-address li {
+  padding: 10px 0;
+  color: var(--color2);
+  cursor: pointer;
+  transition: all 0.5s;
+}
+
+.rottitime-address li:hover {
+  color: var(--color1);
+}
+
+.rottitime-address svg {
+  animation: rottitime-spinner 1s linear infinite;
+  opacity: 0.5;
+  position: absolute;
+  right: 5px;
+  top: 0;
+  height: 100%;
+}
+
+@keyframes rottitime-spinner {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
