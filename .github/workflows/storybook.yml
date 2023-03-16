@@ -5,7 +5,8 @@ on:
       - main
     paths: [
         "src/**/*.tsx",
-        "src/style/theme.ts",
+        "src/**/*.ts",
+        "src/**/*.css",
         ".storybook/*.js",
       ] # Trigger the action only when files change in the folders defined here
 permissions:
