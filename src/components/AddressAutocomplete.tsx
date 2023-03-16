@@ -41,7 +41,6 @@ export default function AddressAutocomplete({
   const results = data.filter((mapData) => mapData.display_name !== textfield)
   const hasResults = !!textfield && !!results.length
 
-  //TODO: Add aria-autocomplete="list"
   return (
     <div className="rottitime-address">
       {!!label && <label htmlFor={inputId}>{label}</label>}
