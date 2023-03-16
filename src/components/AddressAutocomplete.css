@@ -6,6 +6,10 @@
   display: inline-block;
 }
 
+.rottitime-address .input-wrapper {
+  position: relative;
+}
+
 .rottitime-address label {
   display: block;
 }
@@ -32,4 +36,23 @@
 
 .rottitime-address li:hover {
   color: var(--color1);
+}
+
+.rottitime-address svg {
+  animation: rottitime-spinner 1s linear infinite;
+  opacity: 0.5;
+  position: absolute;
+  right: 5px;
+  top: 0;
+  height: 100%;
+}
+
+@keyframes rottitime-spinner {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
 }

@@ -9,6 +9,7 @@ import useDebounce from '../hooks/useDebounce'
 import useFetch, { Props as useFetchProps } from '../hooks/useFetch'
 import { MapData } from '../types'
 import './AddressAutocomplete.css'
+import Loader from './Loader'
 
 type Props = {
   label?: string
@@ -24,7 +25,7 @@ export default function AddressAutocomplete({
   onChange,
   ...props
 }: Props) {
-  const { data, setAddress, clear } = useFetch({ countrycodes })
+  const { data, setAddress, clear, status } = useFetch({ countrycodes })
   const id = useId()
   const inputId = `input_${id}`
   const listId = `list_${id}`
@@ -44,20 +45,23 @@ export default function AddressAutocomplete({
   return (
     <div className="rottitime-address">
       {!!label && <label htmlFor={inputId}>{label}</label>}
-      <input
-        aria-label={label}
-        aria-owns={listId}
-        aria-autocomplete="list"
-        autoComplete="off"
-        type="text"
-        id={inputId}
-        value={textfield}
-        onChange={(e) => {
-          setTextfield(e.target.value)
-          if (typeof onChange === 'function') onChange(e)
-        }}
-        {...props}
-      />
+      <div className="input-wrapper">
+        <input
+          aria-label={label}
+          aria-owns={listId}
+          aria-autocomplete="list"
+          autoComplete="off"
+          type="text"
+          id={inputId}
+          value={textfield}
+          onChange={(e) => {
+            setTextfield(e.target.value)
+            if (typeof onChange === 'function') onChange(e)
+          }}
+          {...props}
+        />
+        {status === 'fetching' && <Loader />}
+      </div>
 
       <div role="listbox" aria-live="polite" id={listId} aria-expanded={hasResults}>
         {hasResults && (
