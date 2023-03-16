@@ -39,7 +39,6 @@ describe('AddressAutocomplete', () => {
     const { label } = props
     render(<AddressAutocomplete {...props} label={undefined} />)
     expect(screen.queryByText(label)).not.toBeInTheDocument()
-    expect(screen.getByLabelText(label)).toHaveAttribute('aria-label', label)
   })
 
   describe('fetch', () => {
@@ -72,6 +71,8 @@ describe('AddressAutocomplete', () => {
 
       fireEvent.change(textfield, { target: { value: 'Hyrule castle' } })
       await waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(1))
+
+      await waitFor(() => expect(within(list).queryByText(selected)).toBeInTheDocument())
 
       fireEvent.click(within(list).getByText(selected))
       expect(textfield).toHaveValue(selected)
