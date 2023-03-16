@@ -24,9 +24,14 @@ Default.args = {
   style: { width: 500 }
 } as ComponentProps<typeof AddressAutocomplete>
 
+export const StylesDisabled = Template.bind({})
+StylesDisabled.args = {
+  ...Default.args,
+  disableStyles: true
+}
+
 export const WithCountryCode = Template.bind({})
 WithCountryCode.args = {
   ...Default.args,
-
   countrycodes: ['GB']
 }

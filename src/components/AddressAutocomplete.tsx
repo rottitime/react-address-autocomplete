@@ -13,6 +13,7 @@ import Loader from './Loader'
 
 type Props = {
   label?: string
+  disableStyles?: boolean
   onSelected?: (data: MapData) => void
   onChange?: (event: ChangeEvent<HTMLInputElement>) => void
 } & Pick<useFetchProps, 'countrycodes'> &
@@ -23,6 +24,7 @@ export default function AddressAutocomplete({
   label,
   onSelected,
   onChange,
+  disableStyles,
   ...props
 }: Props) {
   const { data, setAddress, clear, status } = useFetch({ countrycodes })
@@ -42,7 +44,11 @@ export default function AddressAutocomplete({
   const hasResults = !!textfield && !!results.length
 
   return (
-    <div className="rottitime-address">
+    <div
+      className={`rottitime-address ${
+        !!disableStyles ? 'diable-styles' : 'enable-styles'
+      }`}
+    >
       {!!label && <label htmlFor={inputId}>{label}</label>}
       <div className="input-wrapper">
         <input
