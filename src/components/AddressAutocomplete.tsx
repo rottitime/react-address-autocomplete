@@ -8,7 +8,7 @@ import React, {
 // import useDebounce from '../hooks/useDebounce'
 // import useFetch, { Props as useFetchProps } from '../hooks/useFetch'
 import { MapData } from '../types'
-import './AddressAutocomplete.css'
+// import './AddressAutocomplete.css'
 import Loader from './Loader'
 
 type Props = {
