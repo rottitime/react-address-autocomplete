@@ -1,3 +1,4 @@
+/* eslint-disable import/no-anonymous-default-export */
 import resolve from '@rollup/plugin-node-resolve'
 import commonjs from '@rollup/plugin-commonjs'
 import typescript from '@rollup/plugin-typescript'
@@ -6,7 +7,7 @@ import postcss from 'rollup-plugin-postcss'
 import { terser } from 'rollup-plugin-terser'
 import peerDepsExternal from 'rollup-plugin-peer-deps-external'
 
-// eslint-disable-next-line import/no-anonymous-default-export
+/** @type {import('rollup').RollupOptions} */
 export default [
   {
     input: 'src/index.ts',

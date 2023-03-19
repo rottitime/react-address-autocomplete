@@ -19,5 +19,5 @@
     "allowSyntheticDefaultImports": true,
     "emitDeclarationOnly": true
   },
-  "exclude": ["jest.config.ts", "jest.setup.ts"]
+  "exclude": ["jest.config.ts", "jest.setup.ts", "node_modules", "build"]
 }
