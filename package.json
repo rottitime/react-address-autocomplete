@@ -1,6 +1,6 @@
 {
   "name": "@rottitime/react-address-autocomplete",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "React Address lookup and autocomplete component",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
@@ -31,8 +31,8 @@
   },
   "homepage": "https://github.com/rottitime/react-address-autocomplete#readme",
   "peerDependencies": {
-    "react": ">=18.2.1",
-    "react-dom": ">=18.2.0"
+    "react": ">=18.0.0",
+    "react-dom": ">=18.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.21.3",

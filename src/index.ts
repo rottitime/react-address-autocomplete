@@ -1,1 +1,3 @@
-export { default as AddressAutocomplete } from './components/AddressAutocomplete'
+import AddressAutocomplete from './components/AddressAutocomplete'
+
+export default AddressAutocomplete

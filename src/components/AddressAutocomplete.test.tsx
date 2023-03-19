@@ -54,7 +54,8 @@ describe('AddressAutocomplete', () => {
       await waitFor(() => expect(textfield).toHaveValue('Hyrule castle'))
       await waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(1))
 
-      expect(list).toHaveAttribute('aria-expanded', 'true')
+      await waitFor(() => expect(list).toHaveAttribute('aria-expanded', 'true'))
+
       expect(list).not.toBeEmptyDOMElement()
 
       mockData.forEach(({ display_name }) => {
@@ -76,7 +77,8 @@ describe('AddressAutocomplete', () => {
 
       fireEvent.click(within(list).getByText(selected))
       expect(textfield).toHaveValue(selected)
-      expect(list).toHaveAttribute('aria-expanded', 'false')
+      await waitFor(() => expect(list).toHaveAttribute('aria-expanded', 'false'))
+
       expect(list).toBeEmptyDOMElement()
     })
   })
