@@ -5,8 +5,8 @@ import React, {
   useId,
   useState
 } from 'react'
-import useDebounce from '../hooks/useDebounce'
-import useFetch, { Props as useFetchProps } from '../hooks/useFetch'
+// import useDebounce from '../hooks/useDebounce'
+// import useFetch, { Props as useFetchProps } from '../hooks/useFetch'
 import { MapData } from '../types'
 import './AddressAutocomplete.css'
 import Loader from './Loader'
@@ -16,32 +16,28 @@ type Props = {
   disableStyles?: boolean
   onSelected?: (data: MapData) => void
   onChange?: (event: ChangeEvent<HTMLInputElement>) => void
-} & Pick<useFetchProps, 'countrycodes'> &
-  InputHTMLAttributes<HTMLInputElement>
+} & InputHTMLAttributes<HTMLInputElement>
 
 export default function AddressAutocomplete({
-  countrycodes,
   label,
   onSelected,
   onChange,
   disableStyles,
   ...props
 }: Props) {
-  const { data, setAddress, clear, status } = useFetch({ countrycodes })
-  const id = useId()
+  // const { data, setAddress, clear, status } = useFetch({ countrycodes })
+  const id = 'useId'
   const inputId = `input_${id}`
   const listId = `list_${id}`
   const [textfield, setTextfield] = useState('')
 
-  const debouncedSearchQuery = useDebounce(textfield, 600)
+  // useEffect(() => {
+  //   setAddress(textfield)
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [debouncedSearchQuery])
 
-  useEffect(() => {
-    setAddress(textfield)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [debouncedSearchQuery])
-
-  const results = data.filter((mapData) => mapData.display_name !== textfield)
-  const hasResults = !!textfield && !!results.length
+  // const results = data.filter((mapData) => mapData.display_name !== textfield)
+  // const hasResults = !!textfield && !!results.length
 
   return (
     <div
@@ -58,18 +54,18 @@ export default function AddressAutocomplete({
           autoComplete="off"
           type="text"
           id={inputId}
-          value={textfield}
+          // value={textfield}
           onChange={(e) => {
-            setTextfield(e.target.value)
+            // setTextfield(e.target.value)
             if (typeof onChange === 'function') onChange(e)
           }}
           {...props}
         />
-        {status === 'fetching' && <Loader />}
+        {/* {status === 'fetching' && <Loader />} */}
       </div>
 
-      <div role="listbox" aria-live="polite" id={listId} aria-expanded={hasResults}>
-        {hasResults && (
+      <div role="listbox" aria-live="polite" id={listId}>
+        {/* {hasResults && (
           <ul>
             {results.map((suggestion, index) => {
               return (
@@ -87,7 +83,7 @@ export default function AddressAutocomplete({
               )
             })}
           </ul>
-        )}
+        )} */}
       </div>
     </div>
   )
