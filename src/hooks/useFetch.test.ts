@@ -1,6 +1,5 @@
-import { act, renderHook, waitFor } from '@testing-library/react'
+import { act, renderHook, waitFor } from '../utils/test-utils'
 import useFetch from './useFetch'
-import fetchMock from 'jest-fetch-mock'
 import { MapData } from '../types'
 
 const apiPrefix = 'https://nominatim.openstreetmap.org/search?'
