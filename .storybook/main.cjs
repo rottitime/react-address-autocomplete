@@ -13,5 +13,13 @@ module.exports = {
   features: {
     storyStoreV7: true
   },
-  staticDirs: ['../public']
+  staticDirs: ['../public'],
+  viteFinal: (config, { configType }) => {
+    //fix for github pages 404
+    if (configType === 'PRODUCTION') {
+      config.base = './'
+    }
+
+    return config
+  }
 }
