@@ -1,3 +1,4 @@
+import React from 'react'
 import { screen, render, waitFor, fireEvent, within } from '../utils/test-utils'
 import AddressAutocomplete from './AddressAutocomplete'
 import { MapData } from '../types'
