@@ -1,6 +1,6 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react'
 import React, { ComponentProps } from 'react'
-import AddressAutocomplete from '../index'
+import AddressAutocomplete from '../components/AddressAutocomplete'
 
 export default {
   title: 'AddressAutocomplete',

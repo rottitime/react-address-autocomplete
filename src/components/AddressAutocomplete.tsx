@@ -37,7 +37,6 @@ export default function AddressAutocomplete({
 
   useEffect(() => {
     setAddress(textfield)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [debouncedSearchQuery])
 
   const results = data.filter((mapData) => mapData.display_name !== textfield)
@@ -45,9 +44,7 @@ export default function AddressAutocomplete({
 
   return (
     <div
-      className={`rottitime-address ${
-        !!disableStyles ? 'diable-styles' : 'enable-styles'
-      }`}
+      className={`rottitime-address ${disableStyles ? 'diable-styles' : 'enable-styles'}`}
     >
       {!!label && <label htmlFor={inputId}>{label}</label>}
       <div className="input-wrapper">
