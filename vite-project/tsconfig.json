@@ -16,8 +16,10 @@
     "noEmit": true,
     "declaration": true,
     "typeRoots": ["./dist/index.d.ts"],
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "types": ["node"]
   },
   "include": ["src", "./index.ts"],
+  "exclude": ["**/*.test.ts", "**/*.test.tsx"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
