@@ -21,13 +21,16 @@
   },
   "scripts": {
     "dev": "vite",
+    "lint": "eslint --ext .ts,.tsx ./src",
     "build": "tsc && vite build",
     "prepare": "npm run build",
     "preview": "vite preview",
     "test": "vitest",
+    "test:all": "npm run lint && npm run test",
     "coverage": "vitest run --coverage",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "storybook:build": "build-storybook",
+    "storybook:build:github": "export SET NODE_OPTIONS=--openssl-legacy-provider && build-storybook"
   },
   "dependencies": {
     "react": "^18.2.0",
