@@ -1,7 +1,6 @@
 import React from 'react'
 import { screen, render, waitFor, fireEvent, within } from '@testing-library/react'
 import AddressAutocomplete from './AddressAutocomplete'
-import fetchMock from 'jest-fetch-mock'
 import { MapData } from '../types'
 
 const props = {

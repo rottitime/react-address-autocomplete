@@ -17,9 +17,8 @@
     "declaration": true,
     "typeRoots": ["./dist/index.d.ts"],
     "jsx": "react-jsx",
-    "types": ["node"]
+    "types": ["node", "vitest/globals"]
   },
   "include": ["src", "./index.ts"],
-  "exclude": ["**/*.test.ts", "**/*.test.tsx"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
