@@ -1,4 +1,4 @@
-import { renderHook, waitFor } from '@testing-library/react'
+import { renderHook, waitFor } from '../utils/test-utils'
 import useDebounce from './useDebounce'
 
 describe('useDebounce', () => {
