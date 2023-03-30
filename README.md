@@ -1,6 +1,9 @@
 # React Address Autocomplete
 
-Address lookup component made in React. You can search via anything from postcodes, towns, countries and this component will try to retrieve a list of possibilities
+[![React Address Autocomplete](https://i.ytimg.com/vi/6wXhPYlL2a4/maxresdefault.jpg)](https://www.youtube.com/watch?v=6wXhPYlL2a4)
+
+
+Looking for an easier way to search for addresses? Check out the React Address Autocomplete Plugin! With this plugin, you can search for addresses using postcodes, towns, and even countries. Plus, it's all made in React with Typescript support, making it super easy to use.
 
 Also provides events like `onSelected` to useful information such as:
 
@@ -20,8 +23,8 @@ The field has been minimum styling applied so you can utilise your own colors, f
 Full working example: https://rottitime.github.io/react-address-autocomplete/?path=/story/addressautocomplete--default
 
 [![Edit Button](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/trusting-blackburn-riq4i1?file=/src/App.js)
-
-<img src="https://rottitime.github.io/react-address-autocomplete/img/screenshot.png" alt="screenhshot" />
+          
+<img src="https://rottitime.github.io/react-address-autocomplete/screenshot.png" alt="screenhshot" />
 
 ---
 
@@ -44,7 +47,7 @@ npm install @rottitime/react-address-autocomplete
 Here is an example of a basic app using Material UI's `AddressAutocomplete` component:
 
 ```jsx
-import { AddressAutocomplete } from '@rottitime/react-address-autocomplete'
+import AddressAutocomplete from '@rottitime/react-address-autocomplete'
 
 function App() {
   return <AddressAutocomplete />
