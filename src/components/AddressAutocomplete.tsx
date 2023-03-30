@@ -8,7 +8,7 @@ import React, {
 import useDebounce from '../hooks/useDebounce'
 import useFetch, { Props as useFetchProps } from '../hooks/useFetch'
 import { MapData } from '../types'
-import './AddressAutocomplete.css'
+import styles from './AddressAutocomplete.css?inline'
 import Loader from './Loader'
 
 type Props = {
@@ -18,6 +18,14 @@ type Props = {
   onChange?: (event: ChangeEvent<HTMLInputElement>) => void
 } & Pick<useFetchProps, 'countrycodes'> &
   InputHTMLAttributes<HTMLInputElement>
+
+//function adds style tags with vales of styles to head
+//styles is an object with css values
+function addStyles() {
+  const style = document.createElement('style')
+  style.innerHTML = styles
+  document.head.appendChild(style)
+}
 
 export default function AddressAutocomplete({
   countrycodes,
@@ -38,6 +46,10 @@ export default function AddressAutocomplete({
   useEffect(() => {
     setAddress(textfield)
   }, [debouncedSearchQuery])
+
+  useEffect(() => {
+    addStyles()
+  }, [])
 
   const results = data.filter((mapData) => mapData.display_name !== textfield)
   const hasResults = !!textfield && !!results.length
